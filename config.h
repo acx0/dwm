@@ -59,6 +59,12 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
+/* volume */
+static const char *volupcmd[]     = { "amixer", "-q", "sset", "Master", "2dB+", NULL };
+static const char *voldowncmd[]   = { "amixer", "-q", "sset", "Master", "2dB-", NULL };
+static const char *voltogglecmd[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *micmutecmd[]   = { "amixer", "-q", "sset", "Digital", "0%", NULL };
+static const char *miconcmd[]     = { "amixer", "-q", "sset", "Digital", "42%", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -93,6 +99,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = volupcmd } },
+	{ MODKEY|ShiftMask,             XK_Down,   spawn,          {.v = voldowncmd } },
+	{ MODKEY|ShiftMask,             XK_Left,   spawn,          {.v = voltogglecmd } },
+	{ MODKEY|ShiftMask,             XK_Right,  spawn,          {.v = micmutecmd } },
+	{ MODKEY|ControlMask|ShiftMask, XK_Right,  spawn,          {.v = miconcmd } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -121,3 +132,5 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
+/* vim: set ts=8 sts=0 sw=8 noet :*/
