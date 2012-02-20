@@ -1,5 +1,5 @@
 # dwm version
-VERSION = 5.9
+VERSION = 6.0
 
 # Customize below to fit your system
 
@@ -21,7 +21,7 @@ LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 ${XINERAMALIBS}
 # flags
 CPPFLAGS += -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS += -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+CFLAGS += -std=c99 -pedantic -Wall ${INCS} ${CPPFLAGS}
 #LDFLAGS = -g ${LIBS}
 LDFLAGS += -s ${LIBS}
 
